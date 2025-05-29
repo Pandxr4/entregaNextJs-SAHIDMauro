@@ -1,5 +1,4 @@
-"use client";
-import "../styles/globals.css"; // Estilos globales
+import "../app/globals.css"; // Estilos globales
 import Header from "../components/header";
 import Footer from "../components/footer";
 
