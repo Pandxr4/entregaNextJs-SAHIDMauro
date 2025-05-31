@@ -1,5 +1,5 @@
 // src/app/catalog/page.js
-import ProductCard from "../../components/ProductCard";
+import ProductCard from "../../components/productcard";
 import { mockProducts } from "../../data/mockData";
 
 export default function CatalogPage() {
