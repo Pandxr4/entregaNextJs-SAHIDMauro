@@ -1,6 +1,7 @@
-// src/app/catalog/[id]/page.js
+"use client";
 import { useParams } from "next/navigation";
 import { mockProducts } from "../../../data/mockData";
+import { use } from "react";
 
 export default function ProductDetailPage() {
   const params = useParams();
