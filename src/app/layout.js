@@ -1,19 +1,20 @@
-import "../app/globals.css"; // Estilos globales
-import Header from "../components/header";
-import Footer from "../components/footer";
-import { CartProvider } from "../context/CartContext";
+// src/app/layout.js
+import "../styles/globals.css"; // Estilos globales
+import Header from "../components/Header";
+import Footer from "../components/Footer";
+
 export const metadata = {
   title: "Proyecto Next.js - Sahid Mauro Nicolas",
-  description: "Preentrega 1",
+  description: "Presentación y maquetado del proyecto",
 };
 
 export default function RootLayout({ children }) {
   return (
     <html lang="es">
       <body>
-        <CartProvider>
-          {children}
-        </CartProvider>
+        <Header />
+        <main>{children}</main>
+        <Footer />
       </body>
     </html>
   );

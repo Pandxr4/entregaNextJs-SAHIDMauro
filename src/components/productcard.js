@@ -19,17 +19,3 @@ export default function ProductCard({ product }) {
     </div>
   );
 }
-
-// src/components/ProductCard.js
-import { useCart } from "../context/CartContext";
-
-export default function ProductCard({ product }) {
-  const { addToCart } = useCart();
-
-  return (
-    <div className="border p-4">
-      <h2>{product.name}</h2>
-      <button onClick={() => addToCart(product)}>Añadir al carrito</button>
-    </div>
-  );
-}

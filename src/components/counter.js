@@ -1,5 +1,5 @@
-
-"use client"; 
+// src/components/Counter.js
+"use client";
 
 import { useState } from "react";
 

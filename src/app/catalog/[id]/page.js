@@ -1,27 +1,28 @@
 // src/app/catalog/[id]/page.js
-import { db } from "../../../lib/firebase";
-import { doc, getDoc, collection, getDocs } from "firebase/firestore";
+"use client";
+import { useParams } from "next/navigation";
+import { mockProducts } from "../../../data/mockProducts";
 
-export async function generateStaticParams() {
-  const querySnapshot = await getDocs(collection(db, "productos"));
-  return querySnapshot.docs.map((doc) => ({ id: doc.id }));
-}
-
-export default async function ProductDetailPage({ params }) {
-  const docRef = doc(db, "productos", params.id);
-  const productSnapshot = await getDoc(docRef);
-  const product = productSnapshot.exists() ? productSnapshot.data() : null;
+export default function ProductDetailPage() {
+  const params = useParams();
+  // Convertimos el id a número para hacer la búsqueda simple
+  const product = mockProducts.find(
+    (p) => p.id === Number(params.id)
+  );
 
   if (!product) {
     return <div>Producto no encontrado</div>;
   }
 
-  return (
+return (
     <div className="product-detail">
-      <h1>{product.name}</h1>
-      <img src={product.image} alt={product.name} width={300} />
-      <p>{product.description}</p>
-      <p>Precio: ${product.price}</p>
+        <h1>{product.name}</h1>
+        <img src={product.image} alt={product.name} width={300} />
+        <p>{product.description}</p>
+        <p>Precio: ${product.price}</p>
+        <button onClick={() => alert("Producto añadido al carrito")}>
+            Añadir al carrito
+        </button>
     </div>
-  );
+    );
 }

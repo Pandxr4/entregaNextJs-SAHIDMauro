@@ -1,10 +1,11 @@
+"use client";
+
 // src/app/admin/page.js
 export default function AdminPage() {
   return (
-    <div className="admin">
-      <h1>Panel de Administración</h1>
-      <p>Gestión de productos, órdenes, y más.</p>
-      {}
+    <div className="p-6">
+      <h1 className="text-2xl font-bold">Panel de Administración</h1>
+      <p>Aquí podrás gestionar productos, órdenes y más.</p>
     </div>
   );
 }

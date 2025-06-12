@@ -1,12 +1,16 @@
 // src/app/catalog/page.js
-import { Suspense } from "react";
-import LoadingCatalog from "./loading";
-import CatalogPageContent from "./CatalogPageContent";
+import ProductCard from "../../components/ProductCard";
+import { mockProducts } from "../../data/mockProducts";
 
 export default function CatalogPage() {
   return (
-    <Suspense fallback={<LoadingCatalog />}>
-      <CatalogPageContent />
-    </Suspense>
+    <div className="catalog">
+      <h1>Catálogo de Productos</h1>
+      <div className="products-grid">
+        {mockProducts.map((product) => (
+          <ProductCard key={product.id} product={product} />
+        ))}
+      </div>
+    </div>
   );
 }
