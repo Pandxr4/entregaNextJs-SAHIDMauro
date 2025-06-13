@@ -1,5 +1,6 @@
 "use client";
-
+export function Metadata() {
+}       
 // src/app/admin/page.js
 export default function AdminPage() {
   return (
