@@ -1,14 +1,18 @@
-// src/app/catalog/page.js
+// /app/catalog/page.js
+import { fetchProducts } from "../../data/serverFetch";
 import ProductCard from "../../components/ProductCard";
-import { mockProducts } from "../../data/mockProducts";
 
-export default function CatalogPage() {
+export const dynamic = 'force-dynamic';
+
+export default async function CatalogPage() {
+  const products = await fetchProducts();
+
   return (
-    <div className="catalog">
-      <h1>Catálogo de Productos</h1>
-      <div className="products-grid">
-        {mockProducts.map((product) => (
-          <ProductCard key={product.id} product={product} />
+    <div>
+      <h1>Catálogo</h1>
+      <div className="grid grid-cols-3 gap-4">
+        {products.map(p => (
+          <ProductCard key={p.id} product={p} />
         ))}
       </div>
     </div>

@@ -1,28 +1,21 @@
-// src/app/catalog/[id]/page.js
-"use client";
-import { useParams } from "next/navigation";
-import { mockProducts } from "../../../data/mockProducts";
+// /app/catalog/[id]/page.js
+import { db } from "../../../firebase/db";
+import { doc, getDoc } from "firebase/firestore";
+import { notFound } from "next/navigation";
 
-export default function ProductDetailPage() {
-  const params = useParams();
-  // Convertimos el id a número para hacer la búsqueda simple
-  const product = mockProducts.find(
-    (p) => p.id === Number(params.id)
-  );
+export default async function ProductDetail({ params }) {
+  const docRef = doc(db, "products", params.id);
+  const snap = await getDoc(docRef);
 
-  if (!product) {
-    return <div>Producto no encontrado</div>;
-  }
+  if (!snap.exists()) return notFound();
 
-return (
-    <div className="product-detail">
-        <h1>{product.name}</h1>
-        <img src={product.image} alt={product.name} width={300} />
-        <p>{product.description}</p>
-        <p>Precio: ${product.price}</p>
-        <button onClick={() => alert("Producto añadido al carrito")}>
-            Añadir al carrito
-        </button>
+  const product = snap.data();
+
+  return (
+    <div>
+      <h1>{product.name}</h1>
+      <p>{product.description}</p>
+      {/* cantidad, colores, variantes, botón agregar al carrito */}
     </div>
-    );
+  );
 }

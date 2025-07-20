@@ -1,20 +1,17 @@
-// src/app/layout.js
-import "../styles/globals.css"; // Estilos globales
-import Header from "../components/Header";
-import Footer from "../components/Footer";
+// /app/layout.js
+import "../styles/globals.css";
+import MainLayout from "../components/layout/MainLayout";
 
 export const metadata = {
-  title: "Proyecto Next.js - Sahid Mauro Nicolas",
-  description: "Presentación y maquetado del proyecto",
+  title: "E-commerce Next.js",
+  description: "Catálogo autoadministrable con Firebase",
 };
 
 export default function RootLayout({ children }) {
   return (
     <html lang="es">
       <body>
-        <Header />
-        <main>{children}</main>
-        <Footer />
+        <MainLayout>{children}</MainLayout>
       </body>
     </html>
   );
